@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'dream_cheeky'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: button [options]"
+
+  opts.on("-c [COMMAND]", "Run command when button is pressed") do |c|
+    options[:command] = c
+  end
+
+  opts.on("-l", "Continue listening for button presses after command is executed") do |l|
+    options[:loop] = l
+  end
+end.parse!
+
+# TODO - Detect the type of button
+# that's running and use that; otherwise we have to 
+# specify from the CLI which is lame.
+DreamCheeky::BigRedButton.run do
+  push do
+    if options[:loop]
+      system options[:command]
+    else
+      exec options[:command]
+    end
+  end
+end

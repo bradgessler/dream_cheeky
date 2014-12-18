@@ -14,7 +14,7 @@ Please get in touch if you have an unsupported Dream Cheeky device.
 
 ## Usage
 
-Simple:
+### Simple:
 
 ```ruby
 require 'rubygems'
@@ -27,7 +27,7 @@ DreamCheeky::UsbFidget.run do
 end
 ```
 
-Advanced:
+### Advanced:
 
 ```ruby
 require 'rubygems'
@@ -49,6 +49,22 @@ DreamCheeky::BigRedButton.run do
     browser.object(:id => 'flashcontent').click
   end
 end
+```
+
+### Command line:
+
+Want to run a shell command at the press of a button? Awesome. Just run `button`:
+
+```sh
+# Run the button command once
+$ button -c "say 'Howdy friend'"
+```
+
+Want to run that command over and over again after each button press? Just throw an `-l` at the end of it:
+
+```sh
+# Runs the command over and over again
+$ button -l -c "say 'Howdy friend, this is the song that never ends...'"
 ```
 
 ## Requirements
